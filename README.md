@@ -22,6 +22,6 @@ The notebook versions contain additional comments on using the integrators.
 
 ----
 
-Give the computing IDs for team members here:  UVA_ID1  UVA_ID2 ...
+Give the computing IDs for team members here:  drb5wqd, 
 
 Push your solution code and PDF reports to this repo.
