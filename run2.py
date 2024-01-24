@@ -1,26 +1,23 @@
 import random
-# North = 1
-# East = 2
-# South = 3
-# West = 4
+import time
+random.seed(int(time.time()))
+import numpy as np
+import matplotlib.pyplot as plt
+
+
 def valid_direction(coord, step_direction, size):
-    result = True
-    if step_direction == 1:
-        if coord[1] < 1:
-            return False
-    elif step_direction == 2:
-        if coord[0] > size-1:
-            return False
-    elif step_direction == 3:
-        if coord[1] > size-1:
-            return False
-    elif step_direction == 4:
-        if coord[0] < 1:
-            return False
-    return result
+    x, y = coord
+    if step_direction == 1:  # North
+        return y > 0
+    elif step_direction == 2:  # East
+        return x < size-1
+    elif step_direction == 3:  # South
+        return y < size-1
+    elif step_direction == 4:  # West
+        return x > 0
 
 
-def perform_step(lattice, cluster_sites, size):
+def perform_step(coord, cluster_sites, size):
     step_direction = random.randint(1,4)
     while not valid_direction(coord, step_direction, size):
         step_direction = random.randint(1,4)
@@ -33,27 +30,71 @@ def perform_step(lattice, cluster_sites, size):
         new_coord = (coord[0], coord[1]+1)
     elif step_direction == 4:
         new_coord = (coord[0]-1, coord[1])
+
+    return new_coord
+
+
+def adjacent(coord, cluster_sites):
+    adjacent_sites = [(coord[0]-1, coord[1]), (coord[0]+1, coord[1]), (coord[0], coord[1]-1), (coord[0], coord[1]+1)]
+    for site in adjacent_sites:
+        if site in cluster_sites:
+            return True
+    return False
+
+
+def generate_border_site(cluster_sites, size):
+    index = random.randint(1,size-1)
+    border_options = [(0,index), (index,size-1), (size-1, index), (index, 0)]
+    return random.choice(border_options)
+ 
+
+def run_walker(cluster_sites, size):
+    # Initialize a walker
+    coord = generate_border_site(cluster_sites, size)
+    while coord in cluster_sites:
+        coord = generate_border_site(cluster_sites, size)
+
+    # Randomly walk until clustered
+    while not adjacent(coord, cluster_sites):
+        coord = perform_step(coord, cluster_sites, size)
         
-    if # new_coord is adjacent to a cluster site:
-        # create a new cluster site
-    else:
-        # perform another step
-            
-    return active_sites
+    return coord
 
 
 def run_dla():
-    # Make a lattice with sites set to 0
+    # Initialize cluster and seed
+    # 150x150 could not fit 9000 sites
     size = 150
-    lattice = [[0 for i in range(size)] for j in range(size)]
-    max_sites = 9000
-    lattice[size//2)][size//2] = 1
-    cluster_sites = [(size//2, size//2)]
+    max_sites = 4000
+    cluster_sites = {(size//2, size//2)}
+    
+    # Run walkers
+    while len(cluster_sites) < max_sites:
+        new_coord = run_walker(cluster_sites, size)
+        cluster_sites.add(new_coord)
+        
+        index = len(cluster_sites)
+        if index % 10 == 0:
+            print(f"Site {index} complete")
 
-    while cluster_sites < max_sites:
-        active_sites = perform_step(lattice, cluster_sites, size)
+    with open('dla.txt', 'w') as f:
+        for coord in cluster_sites:
+            f.write(f"{coord[0]}\t{coord[1]}\n")
 
-    print(lattice)
+
+    coordinates = np.loadtxt('dla.txt', dtype=int)
+    mesh = np.zeros((size, size), dtype=int)
+    for x, y in coordinates:
+        mesh[x, y] = 1
+    fig, ax = plt.subplots()
+    ax.imshow(mesh, cmap='binary', interpolation='nearest', origin='upper')
+    
+    ax.set_title('DLA Simulation')
+    ax.set_xlabel('X Coordinate')
+    ax.set_ylabel('Y Coordinate')
+    plt.savefig('dla_plot.png')
+    plt.show()
+
     return
 
 
