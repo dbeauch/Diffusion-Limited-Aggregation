@@ -10,7 +10,7 @@ plist = []
 def  func(t, y):
     m = 1
     a = 0.5
-    b = 0.25
+    b = .25
     F0 = 2
     w = 2.4
     gama = 0.1
