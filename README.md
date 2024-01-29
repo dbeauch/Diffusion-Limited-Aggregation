@@ -17,8 +17,8 @@ This project focuses on two main aspects: the Duffing Oscillator and Diffusion L
 - Employs techniques to calculate the fractal dimension of structures observed.
 - Provides insights into the complexity and scaling of fractal patterns.
 
-![Duffing Oscillator 2D Plot](images/strange.png)
 ![DLA Plot](images/dla_250x250_9000.png)
+![Duffing Oscillator 2D Plot](images/strange.png)
 
 ## Results and Findings
 - Discusses the impact of varying parameters on the Duffing Oscillator and DLA.
