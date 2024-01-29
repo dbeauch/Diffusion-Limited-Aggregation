@@ -1,27 +1,27 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/Q_lTrP7n)
-# P5640ex00
-See the full description of this exercise in the assigned reading and on the course web site.
+# Duffing Oscillator and Diffusion Limited Aggregation
+
+## Overview
+This project focuses on two main aspects: the Duffing Oscillator and Diffusion Limited Aggregation (DLA). It explores the chaotic behavior of a pendulum influenced by magnets (Duffing Oscillator) and models the aggregation process of particles in a lattice (DLA).
+
+## Duffing Oscillator
+- Investigates the chaotic behavior of a pendulum under magnetic influence.
+- Uses the Strange Attractor to measure position and velocity of oscillations.
+- Aims to determine the fractal dimension of the Strange Attractor.
+
+## Diffusion Limited Aggregation (DLA)
+- Simulates crystal aggregate growth on a lattice.
+- Involves initializing a seed, starting random walkers, and drawing occupied sites.
+- Analyzes the fractal dimension of dendritic clusters and their properties.
+
+## Fractal Dimension Analysis
+- Employs techniques to calculate the fractal dimension of structures observed.
+- Provides insights into the complexity and scaling of fractal patterns.
+
+## Results and Findings
+- Discusses the impact of varying parameters on the Duffing Oscillator and DLA.
+- Presents results on fractal dimensions, Strange Attractors, and dendritic clusters.
+
+## Usage
+To use the simulation and analysis scripts, clone this repository and run relevant python files: run1.py for the duffing oscillator and run2.py for the DLA simulation.
 
 
-## C++ starter code
-
-The starter code here (projGSL.cpp) demonstrates very basic usage of the gsl for solving a problem of coupled differential equations.  An 8th order R-K solver with fixed step size is used.  You are encouraged to try other solvers as you explore the problem.  See here for the gsl docs: https://www.gnu.org/software/gsl/doc/html/ode-initval.html
-
-This example solves the 2D projectile motion problem with a simple model for air resistance.  After each step, data are stored in ROOT TGraphs, which are then displayed at the conclusion of the calculation.  These are the basic pieces you will need to address the Duffing Oscillator problem.
-
-----
-## Python starter code
-
-Two examples are given for using ODE solvers from the scipy.integrate sub-package in Python.  In these examples graphs are made using matplotlib.
-
-1) Solution (projScPY2.py[ipynb]) using a more modern interface [scipy.integrate.solve_ivp](https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.integrate.solve_ivp.html#scipy.integrate.solve_ivp).  See also: https://docs.scipy.org/doc/scipy/reference/tutorial/integrate.html  and https://www.programcreek.com/python/example/119375/scipy.integrate.solve_ivp
-
-2) Solution (projScPY.py[ipynb]) using an older interface [scipy.integrate.odeint¶](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html) (see comments here: https://docs.scipy.org/doc/scipy/reference/integrate.html).
-
-The notebook versions contain additional comments on using the integrators.
-
-----
-
-Give the computing IDs for team members here:  drb5wqd, 
-
-Push your solution code and PDF reports to this repo.
