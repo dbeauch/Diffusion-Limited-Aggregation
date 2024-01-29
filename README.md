@@ -15,7 +15,7 @@ This project focuses on two main aspects: the Duffing Oscillator and Diffusion L
 ![DLA Plot](images/dla_250x250_9000.png)
 ![Duffing Oscillator 2D Plot](images/strange.png)
 
-## Usage
+### Usage
 To use the simulation and analysis scripts, clone this repository and run relevant python files: run1.py for the duffing oscillator and run2.py for the DLA simulation.
 
 
